@@ -82,8 +82,8 @@ def get_batch_of_trainval(result, category="train", batch_size=32):
 		label = Image.open(segmentation_path).convert("L").resize((512, 512), Image.NEAREST)
 		label = np.array(label, np.bool)
 		labels = np.zeros((512, 512, 2), np.float32)
-		labels[:, :, 0] = label
-		labels[:, :, 1] = ~label
+		labels[:, :, 0] = ~label
+		labels[:, :, 1] = label
 		labels = np.expand_dims(labels, axis=0)
 		
 		main_list.append(img)
