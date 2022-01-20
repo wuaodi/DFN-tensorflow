@@ -106,7 +106,9 @@ def test(result, model, models, test_outputs):
 			for j in range(len(filenames)):
 				
 				output = Image.fromarray(prediction[j] * 255.0).convert("L").resize(size_list[j], Image.NEAREST)
-				output.save(test_outputs + "/" + filenames[j])
+				filename = filenames[j]
+				filename = filename[0:-4] + '.png'
+				output.save(test_outputs + "/" + filename)
 				print(test_outputs + "/" + filenames[j] + " has been saved.")
 		
 		print("Total time: %d" % (time.time() - start))
